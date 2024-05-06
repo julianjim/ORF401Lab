@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Register a New Ride</h2>
+</div>
+
+<form action="{% url 'rides:create' %}" method="POST">
+    {% csrf_token %}
+    {{ new_ride_form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

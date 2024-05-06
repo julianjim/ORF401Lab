@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="main">
+    <h2>Available Rides</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Origination</th>
+            <th>Destination</th>
+            <th>Vehicle</th>
+            <th>Is Regular</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Passengers</th>
+            <th>Seats Available</th>
+        </tr>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.first_name }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.origination_city }}, {{ person.origination_state }}</td>
+            <td>{{ person.destination_city }}, {{ person.destination_state }}</td>
+            <td>{{ person.vehicle_make }} {{ person.vehicle_model }}</td>
+            <td>{{ person.is_regular|yesno:"Yes,No" }}</td>
+            <td>{{ person.date }}</td>
+            <td>{{ person.time }}</td>
+            <td>{{ person.taking_passengers|yesno:"Yes,No" }}</td>
+            <td>{{ person.seats_available }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Search Form -->
+    <form action="{% url 'rides:index' %}" method="get">
+        <div>
+            <label for="origination_city">Origination City:</label>
+            <input type="text" name="origination_city" value="{{ request.GET.origination_city|default:'' }}" placeholder="City where the ride starts">
+        </div>
+        <div>
+            <label for="origination_state">Origination State:</label>
+            <input type="text" name="origination_state" value="{{ request.GET.origination_state|default:'' }}" placeholder="State (e.g., CA)">
+        </div>
+        <div>
+            <label for="destination_city">Destination City:</label>
+            <input type="text" name="destination_city" value="{{ request.GET.destination_city|default:'' }}" placeholder="City where the ride ends">
+        </div>
+        <div>
+            <label for="destination_state">Destination State:</label>
+            <input type="text" name="destination_state" value="{{ request.GET.destination_state|default:'' }}" placeholder="State (e.g., NY)">
+        </div>
+        <button type="submit" class="btn">Search</button>
+    </form>
+</div>
+
+<script src="{% static 'main.js' %}"></script>
+{% endblock %}

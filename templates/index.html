@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <section class="intro">
+        <img src="{% static 'travel.jpeg' %}" alt="HopStar Logo" class="logo" style="float: right">
+        <p>Join the movement to reduce your carbon footprint with every ride! At HopStar, we partner with major academic conferences and University sports events to make your journey to any event more sustainable.</p>
+        <p>Share a ride, save the planet, and enjoy your favorite events guilt-free!</p>
+        <a href="{% url 'rides:index' %}" class="btn">Find & Share Rides</a>  <!-- Correctly use URL reversing -->
+    </section>
+</div>
+
+<div class="container">
+    <section class="why-hopstar">
+        <h2>Why Choose HopStar?</h2>
+        <img src="{% static 'benefits.jpeg' %}" alt="Benefits of Ridesharing" class="benefits-image">
+        <ul>
+            <li>Reduce CO2 emissions with shared rides.</li>
+            <li>Contribute to a greener planet while attending events.</li>
+            <li>Seamless integration with your favorite ticketing platforms.</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HopStar Rides</title>  
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="{% static 'main.js' %}"></script>
+</head>
+<body onload="checkCookie();">
+    <header>
+        <div class="header-top">
+            <img src="{% static 'logo.jpg' %}" alt="HopStar Logo" class="logo">
+            <h1>HopStar: Eco-Friendly Rides for Events</h1>
+        </div>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'rides:index' %}">Search Rides</a>
+            <a href="{% url 'rides:form' %}">Register</a>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 HopStar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
