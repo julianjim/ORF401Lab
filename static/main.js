@@ -5,7 +5,7 @@ function checkCookie() {
     // Checks if we've visited any aspect of our site for the first time
     if (!getCookie('first_visit')) {
         setCookie('first_visit', 1, 90); // Set the cookie for 90 days 
-        window.location.href = 'http://127.0.0.1:8000/'; // Redirect to the splash page
+        window.location.href = 'https://fathomless-temple-75549-a913d17d22f1.herokuapp.com'; // Redirect to the splash page
     }
 }
 
